@@ -1,0 +1,74 @@
+[project]
+name = "rui"
+version = "0.1.0"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-randomly",
+    "coverage",
+    "ipdb",
+    "invoke",
+    "pre-commit",
+    "pre-commit-hooks",
+    "pyupgrade",
+    "add-trailing-comma",
+    "yesqa",
+    "isort",
+    "black",
+    "flake8",
+    "flake8-bugbear",
+    "flake8-print",
+    "pep8-naming",
+    "mypy",
+    "types-invoke",
+    "vulture",
+    "bandit",
+]
+
+[tool.isort]
+profile = "black"
+line_length = 79
+multi_line_output = 3
+
+[tool.black]
+line-length = 79
+
+[tool.mypy]
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+check_untyped_defs = true
+disallow_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+no_implicit_reexport = true
+strict_concatenate = true
+strict_equality = true
+warn_return_any = true
+
+[tool.vulture]
+min_confidence = 100
+
+[tool.poetry]
+name = "erp"
+version = "0.1.0"
+description = ""
+authors = ["Rui Godoy"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+invoke = "^2.0.0"
+fastapi = "^0.89.1"
+pre-commit = "^3.0.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
