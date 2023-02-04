@@ -3,16 +3,16 @@ from app.entrypoint.api import schemas
 import json
 
 
-def mapper(cashback_schema: schemas.CashBack) -> models.CashBack:
-    cashback_dict = cashback_schema.dict()
-    products_json = json.dumps(cashback_dict["products"])
+def mapper(sale_schema: schemas.Sale) -> models.CashBack:
+    sale_dict = sale_schema.dict()
+    products_json = json.dumps(sale_dict["products"])
 
-    cashback = models.CashBack(
-        sold_at=cashback_schema.sold_at,
-        document=cashback_schema.customer.document,
-        name=cashback_schema.customer.name,
-        total=cashback_schema.total,
+    sale = models.Sale(
+        sold_at=sale_schema.sold_at,
+        document=sale_schema.customer.document,
+        name=sale_schema.customer.name,
+        total=sale_schema.total,
         products=products_json
     )
 
-    return cashback
+    return sale

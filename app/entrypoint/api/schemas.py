@@ -11,7 +11,7 @@ class Product(BaseModel):
     value: float
     qty: int
 
-class CashBack(BaseModel):
+class Sale(BaseModel):
     sold_at: datetime
     customer: Customer
     total: float
