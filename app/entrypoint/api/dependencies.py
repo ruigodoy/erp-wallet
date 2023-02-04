@@ -2,6 +2,7 @@ from fastapi import Depends, HTTPException, Security, status
 from fastapi.security import APIKeyHeader
 from jose import jwt, JWTError
 from app import config
+from app.entrypoint.repositories import PostgresRepository 
 
 API_KEY_HEADER = APIKeyHeader(name="Authorization", auto_error=True)
 
@@ -23,3 +24,7 @@ def auth_required(
             raise invalidate_auth_exception
     except JWTError:
         raise invalidate_auth_exception
+
+
+def make_postgres_repository() -> PostgresRepository:
+    return PostgresRepository()
