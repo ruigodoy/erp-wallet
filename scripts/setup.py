@@ -21,7 +21,6 @@ def main() -> int:
     run(["rm", "-rf", ".venv"])
     run(["poetry", "env", "remove", "-q", "python"])
     run(["poetry", "install"])
-    run(["poetry", "run", "pre-commit", "install"])
 
     run(["poetry", "run", "inv", "run"])
 

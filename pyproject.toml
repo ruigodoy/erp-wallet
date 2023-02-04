@@ -65,11 +65,11 @@ authors = ["Rui Godoy"]
 python = "^3.10"
 invoke = "^2.0.0"
 fastapi = "^0.89.1"
-pre-commit = "^3.0.4"
 uvicorn = "^0.20.0"
 python-jose = "^3.3.0"
 pydantic = {extras = ["dotenv"], version = "^1.10.4"}
 sqlalchemy = "^2.0.1"
+psycopg2 = "^2.9.5"
 
 [tool.poetry.dev-dependencies]
 
