@@ -1,8 +1,8 @@
 from pydantic import BaseSettings
 
-
 class Settings(BaseSettings):
     jwt_secret_key: str = "erp-wallet"
+    url_db: str = "postgresql://erp_user:erp_pass@localhost:5432/erpwallet"
 
     class Config:
         env_file = ".env"
