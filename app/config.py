@@ -9,6 +9,5 @@ class Settings(BaseSettings):
         env_file_encondig =  "utf-8"
 
 
-
 def make_settings() -> Settings:
     return Settings()
