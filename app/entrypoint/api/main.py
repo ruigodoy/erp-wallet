@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-
 from .routers import cashback
 
+from app.entrypoint.database import create_database, drop_database
 
 app = FastAPI(
     title="ERP Wallet API",
@@ -13,9 +13,9 @@ app.include_router(cashback.router)
 
 @app.on_event("startup")
 async def startup_event() -> None:
-    pass
+    create_database()
 
 
 @app.on_event("shutdown")
 async def shutdown_event() -> None:
-    pass
+    drop_database()
