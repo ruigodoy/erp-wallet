@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from app.entrypoint.api import dependencies, schemas
+from app.entrypoint.repositories import PostgresRepository
+from app.entrypoint.utils import mapper
 
 router = APIRouter(
     dependencies=[
@@ -9,16 +11,21 @@ router = APIRouter(
 
 
 @router.post("/api/cashback")
-def cashback(cashback: schemas.CashBack) -> schemas.CashBack:
+def cashback(
+    cashback: schemas.CashBack,
+    postgres_repository: PostgresRepository = Depends(
+        dependencies.make_postgres_repository,
+    )
+) -> schemas.CashBack:
     invalidate_sum_total = HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="The sum of the products does not equal the total!",
-        )
+        status_code=status.HTTP_400_BAD_REQUEST,
+        detail="The sum of the products does not equal the total!",
+    )
     try:
         _validate_sum_total(cashback=cashback)
+        postgres_repository.insert_row(mapper(cashback))
     except ValueError:
         raise invalidate_sum_total
-
     return cashback
 
 
@@ -31,5 +38,4 @@ def _validate_sum_total(cashback: schemas.CashBack):
     
     if total != sum_total_products:
         raise ValueError
-
     return True
