@@ -18,7 +18,7 @@ class Sale(Base):
 class CashBack(Base):
     __tablename__ = "cashback"
 
-    id =Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     created_at = Column(Date)
     message = Column(String)
     document = Column(String)
