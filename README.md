@@ -8,11 +8,23 @@
 - Poetry 1.3.2
 
 ## Setup
+#### Testado em ambiente Linux
 Para inicializar você irá precisar clonar esse repositório e ter os requerimentos (acima), após ter instalado todos os requerimentos e ter clonado o repositório basta rodar (na raiz do projet):
 
 ```
 ./scripts/setup.py
 ```
+
+#### Rodando sem Docker e Docker Compose
+Você irá precisar de uma instância do postgres, ou de algum banco de sua preferência configurado. <br>
+Você irá colocar a URL de acesso na env "DB_URL". <br>
+Rode os comandos:
+```
+poetry install
+poetry shell
+uvicorn app.entrypoint.api.main:app --reload
+```
+
 Após a aplicação ter iniciado, você pode acessar a documentação da API atráves: <http://localhost:8000/docs> será listado os endpoints disponíveis.
 
 ## Rodar os Tests local
@@ -96,5 +108,6 @@ Foi utilizado Poetry para o gerenciamento dos pacotes e dependências da aplica�
       - Funções para auxiliar o desenvolvimento.
 - `scripts/`
   - Local aonde ficará os scripts da aplicação, no momento só temos o script de setup da aplicação.
-
+- `tests/`
+  - Local aonde ficará os tests da aplicação.
 
