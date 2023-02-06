@@ -26,7 +26,9 @@ def cashback(
     try:
         _validate_sum_total(sale=sale)
         postgres_repository.insert_row(mapper_schema_to_model_sale(sale))
-        _send_cashback_request(sale, postgres_repository)
+
+        # Comentei o envio para a API Externa pois está com problema na API externa.
+        # _send_cashback_request(sale, postgres_repository)
     except ValueError:
         raise invalidate_sum_total
     except HTTPError as e:
