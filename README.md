@@ -15,6 +15,13 @@ Para inicializar você irá precisar clonar esse repositório e ter os requerime
 ```
 Após a aplicação ter iniciado, você pode acessar a documentação da API atráves: <http://localhost:8000/docs> será listado os endpoints disponíveis.
 
+## Rodar os Tests local
+Para rodar os tests, basta subir a aplicação e digitar:
+
+```
+pytest
+```
+
 ## Como testar a  API
 Foi criado uma autenticação de uma forma bem simples usando JWT. <br>
 Para testar a API você irá precisar gerar um token JWT: <https://jwt.io/> <br>
